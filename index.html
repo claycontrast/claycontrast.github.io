@@ -161,7 +161,7 @@
   </style>
 </noscript>
 
-<meta name="generator" content="Hexo 5.4.0"></head>
+<meta name="generator" content="Hexo 5.4.0"><script src="/assets/js/DPlayer.min.js"></script></head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
 
@@ -437,19 +437,19 @@
       
         
           
-            <p>
-              最近新购了Pixel
-              ...
-            </p>
-          <!--noindex-->
+            <p>最近新购了Pixel 4，可惜的是 主打功能 Motion Sense 被锁区了，并且 Google Feed 也无法使用，所以必须通过 Root 来解锁这些功能。</p>
+<h3 id="准备官方镜像包"><a href="#准备官方镜像包" class="headerlink" title="准备官方镜像包"></a>准备官方镜像包</h3><p>根据系统当前版本号找到对应 Image 下载。</p>
+<p><a target="_blank" rel="noopener" href="https://developers.google.com/android/images">https://developers.google.com/android/images</a></p>
+<p>解压缩后，文件夹中还有一个 zip 文件，继续解压，找到 boot.img ，将其放在手机的 Downloads 目录下。</p>
+<h3 id="下载-Magisk-Manager-安装"><a href="#下载-Magisk-Manager-安装" class="headerlink" title="下载 Magisk Manager 安装"></a>下载 Magisk Manager 安装</h3><p><a target="_blank" rel="noopener" href="https://github.com/topjohnwu/Magisk">https://github.com/topjohnwu/Magisk</a></p>
+<p>在开源仓库中下载 apk 文件安装到手机。</p>
+<h3 id="修补-boot-img-文件"><a href="#修补-boot-img-文件" class="headerlink" title="修补 boot.img 文件"></a>修补 boot.img 文件</h3><p>打开 Magisk Manager 点击第一个安装按钮， 点击 “选择并修补一个文件”，然后选择 之前传入手机的 boot.img 文件，开始进行修补，成功后会在 Downloads 文件夹生成一个 magisk_patched.img 文件，将此文件移动到电脑中。</p>
+<h3 id="刷入-magisk-patched-img-文件"><a href="#刷入-magisk-patched-img-文件" class="headerlink" title="刷入 magisk_patched.img 文件"></a>刷入 magisk_patched.img 文件</h3><p>USB 连接上手机，通过 adb 命令进入 fastboot 模式：adb reboot bootloader</p>
+<p>进入 fastboot 模式后执行：fastboot flash boot magisk_patched.img</p>
+<p>然后：fastboot reboot</p>
+<p>重启成功后就已经刷入了 Magisk 了。</p>
+
           
-            <div class="post-button text-center">
-              <a class="btn" href="/2020/06/29/pixel4-magisk-root/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          
-          <!--/noindex-->
         
       
     </div>
@@ -615,19 +615,8 @@
       
         
           
-            <p>
-              
-              
-            </p>
-          <!--noindex-->
+            
           
-            <div class="post-button text-center">
-              <a class="btn" href="/2019/07/30/watchface-development/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          
-          <!--/noindex-->
         
       
     </div>
@@ -811,19 +800,43 @@
       
         
           
-            <p>
-              使用镜像由于在国内访
-              ...
-            </p>
-          <!--noindex-->
+            <h4 id="使用镜像"><a href="#使用镜像" class="headerlink" title="使用镜像"></a>使用镜像</h4><p>由于在国内访问Flutter有时可能会受到限制，Flutter官方为中国开发者搭建了临时镜像，大家可以将如下环境变量加入到用户环境变量中：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">export</span> PUB_HOSTED_URL=https://pub.flutter-io.cn</span><br><span class="line"><span class="built_in">export</span> FLUTTER_STORAGE_BASE_URL=https://storage.flutter-io.cn</span><br></pre></td></tr></table></figure>
+
+<h4 id="系统要求"><a href="#系统要求" class="headerlink" title="系统要求"></a>系统要求</h4><p>要安装并运行Flutter，您的开发环境必须满足以下最低要求:</p>
+<ul>
+<li>操作系统: Windows 7 或更高版本 (64-bit)</li>
+<li>磁盘空间: 400 MB (不包括Android Studio的磁盘空间)</li>
+<li>工具: Flutter 依赖 Git for Windows (Git命令行工具)</li>
+</ul>
+<h4 id="获取Flutter-SDK"><a href="#获取Flutter-SDK" class="headerlink" title="获取Flutter SDK"></a>获取Flutter SDK</h4><ol>
+<li><p>去flutter官网下载其最新可用的安装包，<a target="_blank" rel="noopener" href="https://flutter.dev/docs/development/tools/sdk/releases#windows">点击下载</a>，或者到 <a target="_blank" rel="noopener" href="https://github.com/flutter/flutter/releases">Github</a> 仓库下载。</p>
+</li>
+<li><p>将安装包zip解压到你想安装Flutter SDK的路径(如：C:\src\flutter；注意，不要将flutter安装到需要一些高权限的路径如C:\Program Files)。</p>
+</li>
+<li><p>在Flutter安装目录的flutter文件下找到flutter_console.bat，双击运行并启动flutter命令行，接下来，你就可以在Flutter命令行运行flutter命令了。</p>
+</li>
+</ol>
+<h4 id="更新环境变量"><a href="#更新环境变量" class="headerlink" title="更新环境变量"></a>更新环境变量</h4><p>要在终端运行 flutter 命令， 你需要添加以下环境变量到系统PATH：</p>
+<ul>
+<li>转到 “控制面板&gt;用户帐户&gt;用户帐户&gt;更改我的环境变量”.</li>
+<li>在“用户变量”下检查是否有名为“Path”的条目:<ul>
+<li>如果该条目存在, 追加 flutter\bin的全路径，使用 ; 作为分隔符.</li>
+<li>如果条目不存在, 创建一个新用户变量 Path ，然后将 flutter\bin的全路径作为它的值.</li>
+</ul>
+</li>
+<li>在“用户变量”下检查是否有名为”PUB_HOSTED_URL”和”FLUTTER_STORAGE_BASE_URL”的条目，如果没有，也添加它们.</li>
+</ul>
+<h4 id="运行-flutter-doctor"><a href="#运行-flutter-doctor" class="headerlink" title="运行 flutter doctor"></a>运行 flutter doctor</h4><p>打开一个新的命令提示符或PowerShell窗口并运行以下命令以查看是否需要安装任何依赖项来完成安装：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">flutter doctor</span><br></pre></td></tr></table></figure>
+
+<p>该命令检查您的环境并在终端窗口中显示报告。Dart SDK已经在捆绑在Flutter里了，没有必要单独安装Dart。 仔细检查命令行输出以获取可能需要安装的其他软件或进一步需要执行的任务（以粗体显示）</p>
+<p>例如:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">[-] Android toolchain - develop <span class="keyword">for</span> Android devices</span><br><span class="line">    • Android SDK at D:\Android\sdk</span><br><span class="line">    ✗ Android SDK is missing <span class="built_in">command</span> line tools; download from https://goo.gl/XxQghQ</span><br><span class="line">    • Try re-installing or updating your Android SDK,</span><br><span class="line">      visit https://flutter.io/setup/<span class="comment">#android-setup for detailed instructions.</span></span><br></pre></td></tr></table></figure>
+
+<p>第一次运行一个flutter命令（如flutter doctor）时，它会下载它自己的依赖项并自行编译。以后再运行就会快得多。</p>
+
           
-            <div class="post-button text-center">
-              <a class="btn" href="/2019/06/29/windows-flutter/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          
-          <!--/noindex-->
         
       
     </div>
@@ -1007,19 +1020,41 @@
       
         
           
-            <p>
-              Android 的自
-              ...
-            </p>
-          <!--noindex-->
+            <p>Android 的自定义 View 属于 Android 开发的基础技能，但是要能够熟练的实现设计所需的 View 也需要多练习实践。</p>
+<h3 id="自定义-View-步骤"><a href="#自定义-View-步骤" class="headerlink" title="自定义 View 步骤"></a>自定义 View 步骤</h3><ol>
+<li>创建 View</li>
+<li>处理 View 布局</li>
+<li>绘制 View</li>
+<li>处理 交互事件</li>
+<li>优化自定义 View</li>
+</ol>
+<h3 id="自定义-View-关键方法"><a href="#自定义-View-关键方法" class="headerlink" title="自定义 View 关键方法"></a>自定义 View 关键方法</h3><figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">onMeasure</span><br><span class="line">onDraw</span><br><span class="line">onTouchEvent</span><br></pre></td></tr></table></figure>
+
+<h3 id="继承-View"><a href="#继承-View" class="headerlink" title="继承 View"></a>继承 View</h3><p>这里记录实现一个圆环进度控件 RingView 的步骤。</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">RingView</span> <span class="meta">@JvmOverloads</span> <span class="keyword">constructor</span></span>(context: Context, attrs: AttributeSet? = <span class="literal">null</span>, defStyleAttr: <span class="built_in">Int</span> = <span class="number">0</span>) :View(context, attrs, defStyleAttr)</span><br></pre></td></tr></table></figure>
+
+<p>这里使用了 Kotlin 中的 <code>@JvmOverloads</code> 注解来标记构造函数，<code>@JvmOverloads</code> 的作用就是能够使 RingView 的单个构造函数在编译过程中通过默认值来生成三个不同的构造函数，等同于 Java 实现三个参数不同的构造函数。</p>
+<h3 id="测量-View-的绘制区域"><a href="#测量-View-的绘制区域" class="headerlink" title="测量 View 的绘制区域"></a>测量 View 的绘制区域</h3><p>因为 RingView 是一个圆环进度控件，所以所需的绘制区域是一个正方形，View 的可绘制区域受到父控件的限制，所以正方形区域的边长则取 width 和 height 中的 min 值。</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">override</span> <span class="function"><span class="keyword">fun</span> <span class="title">onMeasure</span><span class="params">(widthMeasureSpec: <span class="type">Int</span>, heightMeasureSpec: <span class="type">Int</span>)</span></span> &#123;</span><br><span class="line">      <span class="keyword">val</span> widthSpecSize = MeasureSpec.getSize(widthMeasureSpec)</span><br><span class="line">      <span class="keyword">val</span> heightSpecSize = MeasureSpec.getSize(heightMeasureSpec)</span><br><span class="line">      <span class="keyword">val</span> minSize = min(widthSpecSize, heightSpecSize)</span><br><span class="line">      setMeasuredDimension(minSize, minSize)<span class="comment">//保证绘制区域为正方形</span></span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="绘制-View"><a href="#绘制-View" class="headerlink" title="绘制 View"></a>绘制 View</h3><p>定义绘制图形所需要的一些属性</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> <span class="keyword">val</span> maxValue = <span class="number">100f</span><span class="comment">//圆环最大值</span></span><br><span class="line"><span class="keyword">private</span> <span class="keyword">var</span> currentValue = <span class="number">10f</span><span class="comment">//圆环当前值</span></span><br><span class="line"><span class="keyword">private</span> <span class="keyword">var</span> ringColor = Color.WHITE<span class="comment">//外层圆环颜色</span></span><br><span class="line"><span class="keyword">private</span> <span class="keyword">var</span> currentColor = Color.BLUE<span class="comment">//内层圆弧颜色</span></span><br><span class="line"><span class="keyword">private</span> <span class="keyword">var</span> textColor = Color.BLACK<span class="comment">//字体颜色</span></span><br><span class="line"><span class="keyword">private</span> <span class="keyword">var</span> ringWidth = <span class="number">100f</span><span class="comment">//外层圆环宽度</span></span><br><span class="line"><span class="keyword">private</span> <span class="keyword">val</span> currentRect = RectF()<span class="comment">//画内层圆弧所需</span></span><br></pre></td></tr></table></figure>
+
+<p>如果需要在 xml 中能够配置某些属性则需要在 attrs 文件中声明属性</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">resources</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">declare-styleable</span> <span class="attr">name</span>=<span class="string">&quot;RingView&quot;</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">attr</span> <span class="attr">name</span>=<span class="string">&quot;ringColor&quot;</span> <span class="attr">format</span>=<span class="string">&quot;color&quot;</span> /&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">attr</span> <span class="attr">name</span>=<span class="string">&quot;currentColor&quot;</span> <span class="attr">format</span>=<span class="string">&quot;color&quot;</span> /&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">attr</span> <span class="attr">name</span>=<span class="string">&quot;textColor&quot;</span> <span class="attr">format</span>=<span class="string">&quot;color&quot;</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">declare-styleable</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">resources</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>在自定义 View 中获取这些 xml 中配置的属性</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">init</span> &#123;</span><br><span class="line">    attrs?.let &#123;</span><br><span class="line">        <span class="keyword">val</span> typeArray = context.obtainStyledAttributes(it, R.styleable.RingView)</span><br><span class="line">        ringColor = typeArray.getColor(R.styleable.RingView_ringColor, Color.WHITE)</span><br><span class="line">        currentColor = typeArray.getColor(R.styleable.RingView_currentColor, Color.BLUE)</span><br><span class="line">        textColor = typeArray.getColor(R.styleable.RingView_textColor, Color.BLACK)</span><br><span class="line">        typeArray.recycle()</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>绘制图形的关键类 <code>Paint Canvas</code></p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">override</span> <span class="function"><span class="keyword">fun</span> <span class="title">onDraw</span><span class="params">(canvas: <span class="type">Canvas</span>)</span></span> &#123;</span><br><span class="line">    <span class="keyword">val</span> center = width / <span class="number">2f</span><span class="comment">//圆心点</span></span><br><span class="line">    <span class="keyword">val</span> radius = center - ringWidth / <span class="number">2</span><span class="comment">//圆环半径</span></span><br><span class="line">    <span class="comment">//画圆环底色</span></span><br><span class="line">    paint.isAntiAlias = <span class="literal">true</span></span><br><span class="line">    paint.color = ringColor</span><br><span class="line">    paint.style = Paint.Style.STROKE</span><br><span class="line">    paint.strokeWidth = ringWidth</span><br><span class="line">    canvas.drawCircle(center, center, radius, paint)</span><br><span class="line">    <span class="comment">//画圆环进度弧形</span></span><br><span class="line">    <span class="keyword">val</span> currentAngle = currentValue / maxValue * <span class="number">360f</span><span class="comment">//进度弧形角度</span></span><br><span class="line">    currentRect.<span class="keyword">set</span>(ringWidth / <span class="number">2f</span>, ringWidth / <span class="number">2f</span>, width - ringWidth / <span class="number">2f</span>, width - ringWidth / <span class="number">2f</span>)</span><br><span class="line">    paint.color = currentColor</span><br><span class="line">    paint.strokeWidth = ringWidth - <span class="number">20f</span></span><br><span class="line">    canvas.drawArc(currentRect, <span class="number">90f</span>, currentAngle, <span class="literal">false</span>, paint)</span><br><span class="line">    <span class="comment">//画百分比文字</span></span><br><span class="line">    paint.style = Paint.Style.FILL</span><br><span class="line">    paint.color = textColor</span><br><span class="line">    paint.strokeWidth = <span class="number">12f</span></span><br><span class="line">    paint.textSize = <span class="number">100f</span></span><br><span class="line">    paint.typeface = Typeface.DEFAULT_BOLD</span><br><span class="line">    paint.textAlign = Paint.Align.CENTER</span><br><span class="line">    <span class="keyword">val</span> text = <span class="string">&quot;<span class="subst">$&#123;(currentValue / maxValue * <span class="number">100</span>).toInt()&#125;</span>%&quot;</span></span><br><span class="line">    <span class="keyword">val</span> fontMetrics = paint.fontMetrics</span><br><span class="line">    <span class="keyword">val</span> distance = (fontMetrics.bottom - fontMetrics.top) / <span class="number">2f</span> - fontMetrics.bottom</span><br><span class="line">    canvas.drawText(text, center, center + distance, paint)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>这个控件并没有重载 <code>onTouchEvent</code> 方法，因为暂时不需要处理用户的触摸点击事件，但是添加了进度动画，使用 <code>ValueAnimator</code> 实现。</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">fun</span> <span class="title">setProgress</span><span class="params">(progress: <span class="type">Float</span>)</span></span> &#123;</span><br><span class="line">    <span class="keyword">if</span> (animator.isRunning) &#123;</span><br><span class="line">        animator.cancel()</span><br><span class="line">    &#125;</span><br><span class="line">    animator = ValueAnimator.ofFloat(currentValue, progress)</span><br><span class="line">    animator.duration = <span class="number">1000L</span></span><br><span class="line">    animator.addUpdateListener &#123;</span><br><span class="line">        currentValue = it.animatedValue <span class="keyword">as</span> <span class="built_in">Float</span></span><br><span class="line">        invalidate()</span><br><span class="line">    &#125;</span><br><span class="line">    animator.start()</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="结束"><a href="#结束" class="headerlink" title="结束"></a>结束</h3><p>这只是最基础的自定义 View 实现过程。在 Android 开发这条路上还有很长的路要走。<a target="_blank" rel="noopener" href="https://github.com/hotsx/hotsx-tools/blob/master/ringview/src/main/java/com/hotsx/ringview/RingView.kt">这里是源码</a></p>
+
           
-            <div class="post-button text-center">
-              <a class="btn" href="/2019/06/27/kotlin-customize-view/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          
-          <!--/noindex-->
         
       
     </div>
@@ -1203,19 +1238,15 @@
       
         
           
-            <p>
-              1.烧饼EZ打野单杀
-              ...
-            </p>
-          <!--noindex-->
+            <h4 id="1-烧饼EZ打野单杀瞎子，徐总你看看"><a href="#1-烧饼EZ打野单杀瞎子，徐总你看看" class="headerlink" title="1.烧饼EZ打野单杀瞎子，徐总你看看"></a>1.烧饼EZ打野单杀瞎子，徐总你看看</h4><div id="dplayer0" class="dplayer hexo-tag-dplayer-mark" style="margin-bottom: 20px;"></div><script>(function(){var player = new DPlayer({"container":document.getElementById("dplayer0"),"theme":"#FADFA3","video":{"url":"https://onedrive.gimhoy.com/1drv/aHR0cHM6Ly8xZHJ2Lm1zL3YvcyFBcEh2MjFHNDFLM1FpcUlVQk82dXVtMXc2SFQxUkE=.mp4"},"danmaku":{"api":"http://dplayer.daoapp.io","token":"tokendemo"}});window.dplayers||(window.dplayers=[]);window.dplayers.push(player);})()</script>
+
+<h4 id="2-老板天秀寒冰，杀人不忘补刀"><a href="#2-老板天秀寒冰，杀人不忘补刀" class="headerlink" title="2.老板天秀寒冰，杀人不忘补刀"></a>2.老板天秀寒冰，杀人不忘补刀</h4><div id="dplayer1" class="dplayer hexo-tag-dplayer-mark" style="margin-bottom: 20px;"></div><script>(function(){var player = new DPlayer({"container":document.getElementById("dplayer1"),"theme":"#FADFA3","video":{"url":"https://onedrive.gimhoy.com/1drv/aHR0cHM6Ly8xZHJ2Lm1zL3YvcyFBcEh2MjFHNDFLM1FpcUlSbkdsTDdxbjJfbjRKSmc=.mp4"},"danmaku":{"api":"http://dplayer.daoapp.io","token":"tokendemo"}});window.dplayers||(window.dplayers=[]);window.dplayers.push(player);})()</script>
+
+<h4 id="3-一万个超级兵"><a href="#3-一万个超级兵" class="headerlink" title="3.一万个超级兵"></a>3.一万个超级兵</h4><div id="dplayer2" class="dplayer hexo-tag-dplayer-mark" style="margin-bottom: 20px;"></div><script>(function(){var player = new DPlayer({"container":document.getElementById("dplayer2"),"theme":"#FADFA3","video":{"url":"https://onedrive.gimhoy.com/1drv/aHR0cHM6Ly8xZHJ2Lm1zL3YvcyFBcEh2MjFHNDFLM1FpcUlQN1R5c0ZZcmNQOHk4YXc=.mp4"},"danmaku":{"api":"http://dplayer.daoapp.io","token":"tokendemo"}});window.dplayers||(window.dplayers=[]);window.dplayers.push(player);})()</script>
+
+<h4 id="4-笨比"><a href="#4-笨比" class="headerlink" title="4.笨比"></a>4.笨比</h4><div id="dplayer3" class="dplayer hexo-tag-dplayer-mark" style="margin-bottom: 20px;"></div><script>(function(){var player = new DPlayer({"container":document.getElementById("dplayer3"),"theme":"#FADFA3","video":{"url":"https://onedrive.gimhoy.com/1drv/aHR0cHM6Ly8xZHJ2Lm1zL3YvcyFBcEh2MjFHNDFLM1FpcUlTdjhKVlREWWRHS2M1dXc=.mp4"},"danmaku":{"api":"http://dplayer.daoapp.io","token":"tokendemo"}});window.dplayers||(window.dplayers=[]);window.dplayers.push(player);})()</script>
+
           
-            <div class="post-button text-center">
-              <a class="btn" href="/2019/06/24/lol/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          
-          <!--/noindex-->
         
       
     </div>
@@ -1399,19 +1430,52 @@
       
         
           
-            <p>
-              Android St
-              ...
-            </p>
-          <!--noindex-->
+            <p>Android Studio 使用的是 Gradle 构建 Android 项目，而 Gradle 使用的是基于 Groovy 语言的 DSL 来配置项目的。因为 Groovy 是动态语言，并且为了项目语言的统一和减少语言学习成本，所以我选择从 Groovy 迁移到 Kotlin DSL。这里记录迁移步骤😄。</p>
+<h3 id="迁移条件"><a href="#迁移条件" class="headerlink" title="迁移条件"></a>迁移条件</h3><p>Gradle Wrapper 需要5.0以上版本</p>
+<h3 id="setting-gradle"><a href="#setting-gradle" class="headerlink" title="setting.gradle"></a>setting.gradle</h3><p>重命名文件，加上 <code>.kts</code> 后缀 <code>setting.gradle.kts</code>，所有 <code>.gradle</code> 文件都需要加上 <code>.kts</code> 后缀。<br>修改文件内容</p>
+<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//Groovy</span></span><br><span class="line">include <span class="string">&#x27;:app&#x27;</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//Kotlin</span></span><br><span class="line">include(<span class="string">&quot;:app&quot;</span>)</span><br></pre></td></tr></table></figure>
+
+<h3 id="project-build-gradle-kts"><a href="#project-build-gradle-kts" class="headerlink" title="project build.gradle.kts"></a>project build.gradle.kts</h3><p>Groovy 变量声明改为 Kotlin 变量声明，Groovy 中的字符串可以使用单引号包裹而 Kotlin 必须使用双引号。</p>
+<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//Groovy</span></span><br><span class="line">ext.kotlin_version = <span class="string">&#x27;1.3.40&#x27;</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//Kotlin</span></span><br><span class="line"><span class="keyword">val</span> kotlinVersion = <span class="string">&quot;1.3.40&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>buildscript</p>
+<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//Groovy</span></span><br><span class="line">buildscript &#123;</span><br><span class="line">    ext.kotlin_version = <span class="string">&#x27;1.3.40&#x27;</span></span><br><span class="line">    repositories &#123;</span><br><span class="line">        google()</span><br><span class="line">        jcenter()</span><br><span class="line">    &#125;</span><br><span class="line">    dependencies &#123;</span><br><span class="line">        classpath <span class="string">&#x27;com.android.tools.build:gradle:3.4.1&#x27;</span></span><br><span class="line">        classpath <span class="string">&quot;org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version&quot;</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//Kotlin</span></span><br><span class="line">buildscript &#123;</span><br><span class="line">    <span class="keyword">val</span> kotlinVersion = <span class="string">&quot;1.3.40&quot;</span></span><br><span class="line">    repositories &#123;</span><br><span class="line">        google()</span><br><span class="line">        jcenter()</span><br><span class="line">    &#125;</span><br><span class="line">    dependencies &#123;</span><br><span class="line">        classpath(<span class="string">&quot;com.android.tools.build:gradle:3.4.1&quot;</span>)</span><br><span class="line">        classpath(<span class="string">&quot;org.jetbrains.kotlin:kotlin-gradle-plugin:<span class="variable">$kotlinVersion</span>&quot;</span>)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>allprojects</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F;Grovvy</span><br><span class="line">allprojects &#123;</span><br><span class="line">    repositories &#123;</span><br><span class="line">        google()</span><br><span class="line">        jcenter()</span><br><span class="line">        maven&#123; url https:&#x2F;&#x2F;jitpack.io &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//Kotlin</span></span><br><span class="line">allprojects &#123;</span><br><span class="line">    repositories &#123;</span><br><span class="line">        google()</span><br><span class="line">        jcenter()</span><br><span class="line">        maven(url = <span class="string">&quot;https://jitpack.io&quot;</span>)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>task</p>
+<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//Groovy</span></span><br><span class="line">task clean(<span class="attr">type:</span> Delete) &#123;</span><br><span class="line">    delete rootProject.buildDir</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//Kotlin</span></span><br><span class="line">task&lt;Delete&gt;(<span class="string">&quot;clean&quot;</span>) &#123;</span><br><span class="line">    delete(rootProject.buildDir)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="module-build-gradle-kts"><a href="#module-build-gradle-kts" class="headerlink" title="module build.gradle.kts"></a>module build.gradle.kts</h3><p>plugins</p>
+<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//Groovy</span></span><br><span class="line">apply <span class="attr">plugin:</span> <span class="string">&#x27;com.android.application&#x27;</span></span><br><span class="line">apply <span class="attr">plugin:</span> <span class="string">&#x27;kotlin-android&#x27;</span></span><br><span class="line">apply <span class="attr">plugin:</span> <span class="string">&#x27;kotlin-android-extensions&#x27;</span></span><br><span class="line">apply <span class="attr">plugin:</span> <span class="string">&#x27;kotlin-kapt&#x27;</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//Kotlin</span></span><br><span class="line">plugins &#123;</span><br><span class="line">    id(<span class="string">&quot;com.android.application&quot;</span>)</span><br><span class="line">    kotlin(<span class="string">&quot;android&quot;</span>)</span><br><span class="line">    id(<span class="string">&quot;kotlin-android-extensions&quot;</span>)</span><br><span class="line">    kotlin(<span class="string">&quot;kapt&quot;</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>android</p>
+<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//Groovy</span></span><br><span class="line">android &#123;</span><br><span class="line">    compileSdkVersion <span class="number">29</span></span><br><span class="line">    buildToolsVersion = <span class="string">&#x27;28.0.3&#x27;</span></span><br><span class="line">    defaultConfig &#123;</span><br><span class="line">        applicationId <span class="string">&quot;com.hotsx.bandwagon&quot;</span></span><br><span class="line">        minSdkVersion <span class="number">24</span></span><br><span class="line">        targetSdkVersion <span class="number">29</span></span><br><span class="line">        versionCode <span class="number">1</span></span><br><span class="line">        versionName <span class="string">&quot;1.0&quot;</span></span><br><span class="line">        testInstrumentationRunner <span class="string">&quot;androidx.test.runner.AndroidJUnitRunner&quot;</span></span><br><span class="line">    &#125;</span><br><span class="line">    buildTypes &#123;</span><br><span class="line">        release &#123;</span><br><span class="line">            minifyEnabled <span class="literal">false</span></span><br><span class="line">            proguardFiles getDefaultProguardFile (<span class="string">&#x27;proguard-android-optimize.txt&#x27;</span>), <span class="string">&#x27;proguard-rules.pro&#x27;</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    dataBinding &#123;</span><br><span class="line">        enabled <span class="literal">true</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    androidExtensions &#123;</span><br><span class="line">        experimental = <span class="literal">true</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//Kotlin</span></span><br><span class="line">configure&lt;AppExtension&gt; &#123;</span><br><span class="line">    compileSdkVersion(<span class="number">29</span>)</span><br><span class="line">    buildToolsVersion(<span class="string">&quot;28.0.3&quot;</span>)</span><br><span class="line">    defaultConfig &#123;</span><br><span class="line">        applicationId = <span class="string">&quot;com.hotsx.bandwagon&quot;</span></span><br><span class="line">        minSdkVersion(<span class="number">24</span>)</span><br><span class="line">        targetSdkVersion(<span class="number">29</span>)</span><br><span class="line">        versionCode = <span class="number">1</span></span><br><span class="line">        versionName = <span class="string">&quot;1.0&quot;</span></span><br><span class="line">        testInstrumentationRunner = <span class="string">&quot;androidx.test.runner.AndroidJUnitRunner&quot;</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    buildTypes &#123;</span><br><span class="line">        getByName(<span class="string">&quot;release&quot;</span>) &#123;</span><br><span class="line">            isMinifyEnabled = <span class="literal">false</span></span><br><span class="line">            proguardFiles(getDefaultProguardFile(<span class="string">&quot;proguard-android-optimize.txt&quot;</span>), <span class="string">&quot;proguard-rules.pro&quot;</span>)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    dataBinding.isEnabled = <span class="literal">true</span></span><br><span class="line">    androidExtensions.isExperimental = <span class="literal">true</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>dependencies</p>
+<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//Groovy</span></span><br><span class="line">dependencies &#123;</span><br><span class="line">    ext.room_version = <span class="string">&quot;2.1.0&quot;</span></span><br><span class="line">    ext.lifecycle_version = <span class="string">&quot;2.0.0&quot;</span></span><br><span class="line"></span><br><span class="line">    implementation fileTree (<span class="attr">dir:</span> <span class="string">&#x27;libs&#x27;</span>, <span class="attr">include:</span> [<span class="string">&#x27;*.jar&#x27;</span>])</span><br><span class="line">    implementation <span class="string">&quot;org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version&quot;</span></span><br><span class="line">    implementation <span class="string">&#x27;androidx.appcompat:appcompat:1.0.2&#x27;</span></span><br><span class="line">    implementation <span class="string">&#x27;com.google.android.material:material:1.0.0&#x27;</span></span><br><span class="line">    implementation <span class="string">&#x27;androidx.constraintlayout:constraintlayout:1.1.3&#x27;</span></span><br><span class="line"></span><br><span class="line">    implementation <span class="string">&#x27;androidx.navigation:navigation-fragment-ktx:2.1.0-alpha05&#x27;</span> <span class="comment">// Navigation</span></span><br><span class="line">    implementation <span class="string">&#x27;androidx.navigation:navigation-ui-ktx:2.1.0-alpha05&#x27;</span><span class="comment">//Navigation</span></span><br><span class="line">    implementation(<span class="string">&quot;com.squareup.retrofit2:retrofit:2.5.0&quot;</span>)<span class="comment">//retrofit</span></span><br><span class="line">    implementation(<span class="string">&quot;com.squareup.retrofit2:converter-gson:2.5.0&quot;</span>)<span class="comment">//Gson</span></span><br><span class="line">    implementation <span class="string">&#x27;com.jakewharton.retrofit:retrofit2-kotlin-coroutines-adapter:0.9.2&#x27;</span><span class="comment">//Coroutines</span></span><br><span class="line">    implementation(<span class="string">&quot;org.koin:koin-android-viewmodel:2.0.0-GA&quot;</span>)<span class="comment">//Koin</span></span><br><span class="line">    implementation <span class="string">&#x27;com.tencent:mmkv-static:1.0.19&#x27;</span><span class="comment">//MMKV</span></span><br><span class="line">    implementation <span class="string">&#x27;com.orhanobut:logger:2.2.0&#x27;</span><span class="comment">//logger</span></span><br><span class="line"></span><br><span class="line">    implementation <span class="string">&#x27;androidx.legacy:legacy-support-v4:1.0.0&#x27;</span></span><br><span class="line">    kapt <span class="string">&quot;androidx.lifecycle:lifecycle-compiler:$lifecycle_version&quot;</span></span><br><span class="line">    kapt <span class="string">&quot;androidx.room:room-compiler:$room_version&quot;</span></span><br><span class="line">    implementation <span class="string">&quot;androidx.lifecycle:lifecycle-extensions:$lifecycle_version&quot;</span></span><br><span class="line">    implementation <span class="string">&quot;androidx.room:room-runtime:$room_version&quot;</span></span><br><span class="line">    implementation <span class="string">&quot;androidx.room:room-ktx:$room_version&quot;</span></span><br><span class="line">    implementation <span class="string">&quot;me.toptas.fancyshowcase:fancyshowcaseview:1.1.4&quot;</span><span class="comment">//Fancyshowcaseview</span></span><br><span class="line">    <span class="comment">/**Dialog*/</span></span><br><span class="line">    implementation <span class="string">&#x27;com.afollestad.material-dialogs:core:3.0.0-alpha2&#x27;</span></span><br><span class="line">    implementation <span class="string">&#x27;com.afollestad.material-dialogs:input:3.0.0-alpha2&#x27;</span></span><br><span class="line">    <span class="comment">/**chart*/</span></span><br><span class="line">    implementation <span class="string">&#x27;com.diogobernardino:williamchart:2.5.0&#x27;</span></span><br><span class="line">    <span class="comment">/**debugDatabase*/</span></span><br><span class="line">    debugImplementation <span class="string">&#x27;com.amitshekhar.android:debug-db:1.0.6&#x27;</span></span><br><span class="line">    <span class="comment">/*test*/</span></span><br><span class="line">    testImplementation <span class="string">&#x27;junit:junit:4.12&#x27;</span></span><br><span class="line">    androidTestImplementation <span class="string">&#x27;androidx.test:runner:1.2.0&#x27;</span></span><br><span class="line">    androidTestImplementation <span class="string">&#x27;androidx.test.espresso:espresso-core:3.2.0&#x27;</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//Kotlin</span></span><br><span class="line">dependencies &#123;</span><br><span class="line">    <span class="keyword">val</span> roomVersion = <span class="string">&quot;2.1.0&quot;</span></span><br><span class="line">    <span class="keyword">val</span> lifecycleVersion = <span class="string">&quot;2.0.0&quot;</span></span><br><span class="line"></span><br><span class="line">    implementation(fileTree(mapOf(<span class="string">&quot;include&quot;</span> to <span class="string">&quot;*.jar&quot;</span>, <span class="string">&quot;dir&quot;</span> to <span class="string">&quot;libs&quot;</span>)))</span><br><span class="line">    implementation(kotlin(<span class="string">&quot;stdlib-jdk8&quot;</span>, KotlinCompilerVersion.VERSION))</span><br><span class="line">    implementation(<span class="string">&quot;androidx.appcompat:appcompat:1.0.2&quot;</span>)</span><br><span class="line">    implementation(<span class="string">&quot;com.google.android.material:material:1.0.0&quot;</span>)</span><br><span class="line">    implementation(<span class="string">&quot;androidx.constraintlayout:constraintlayout:1.1.3&quot;</span>)</span><br><span class="line"></span><br><span class="line">    implementation(<span class="string">&quot;androidx.navigation:navigation-fragment-ktx:2.1.0-alpha05&quot;</span>)<span class="comment">// Navigation</span></span><br><span class="line">    implementation(<span class="string">&quot;androidx.navigation:navigation-ui-ktx:2.1.0-alpha05&quot;</span>)<span class="comment">//Navigation</span></span><br><span class="line">    implementation(<span class="string">&quot;com.squareup.retrofit2:retrofit:2.5.0&quot;</span>)<span class="comment">//retrofit</span></span><br><span class="line">    implementation(<span class="string">&quot;com.squareup.retrofit2:converter-gson:2.5.0&quot;</span>)<span class="comment">//Gson</span></span><br><span class="line">    implementation(<span class="string">&quot;com.jakewharton.retrofit:retrofit2-kotlin-coroutines-adapter:0.9.2&quot;</span>)<span class="comment">//Coroutines</span></span><br><span class="line">    implementation(<span class="string">&quot;org.koin:koin-android-viewmodel:2.0.0-GA&quot;</span>)<span class="comment">//Koin</span></span><br><span class="line">    implementation(<span class="string">&quot;com.tencent:mmkv-static:1.0.19&quot;</span>)<span class="comment">//MMKV</span></span><br><span class="line">    implementation(<span class="string">&quot;com.orhanobut:logger:2.2.0&quot;</span>)<span class="comment">//logger</span></span><br><span class="line"></span><br><span class="line">    implementation(<span class="string">&quot;androidx.legacy:legacy-support-v4:1.0.0&quot;</span>)</span><br><span class="line">    kapt(<span class="string">&quot;androidx.lifecycle:lifecycle-compiler:<span class="variable">$lifecycleVersion</span>&quot;</span>)</span><br><span class="line">    kapt(<span class="string">&quot;androidx.room:room-compiler:<span class="variable">$roomVersion</span>&quot;</span>)</span><br><span class="line">    implementation(<span class="string">&quot;androidx.lifecycle:lifecycle-extensions:<span class="variable">$lifecycleVersion</span>&quot;</span>)</span><br><span class="line">    implementation(<span class="string">&quot;androidx.room:room-runtime:<span class="variable">$roomVersion</span>&quot;</span>)</span><br><span class="line">    implementation(<span class="string">&quot;androidx.room:room-ktx:<span class="variable">$roomVersion</span>&quot;</span>)</span><br><span class="line">    implementation(<span class="string">&quot;me.toptas.fancyshowcase:fancyshowcaseview:1.1.4&quot;</span>)<span class="comment">//Fancyshowcaseview</span></span><br><span class="line">    <span class="comment">/**Dialog*/</span></span><br><span class="line">    implementation(<span class="string">&quot;com.afollestad.material-dialogs:core:3.0.0-alpha2&quot;</span>)</span><br><span class="line">    implementation(<span class="string">&quot;com.afollestad.material-dialogs:input:3.0.0-alpha2&quot;</span>)</span><br><span class="line">    <span class="comment">/**chart*/</span></span><br><span class="line">    implementation(<span class="string">&quot;com.diogobernardino:williamchart:2.5.0&quot;</span>)</span><br><span class="line">    <span class="comment">/**debugDatabase*/</span></span><br><span class="line">    debugImplementation(<span class="string">&quot;com.amitshekhar.android:debug-db:1.0.6&quot;</span>)</span><br><span class="line">    <span class="comment">/*test*/</span></span><br><span class="line">    testImplementation(<span class="string">&quot;junit:junit:4.12&quot;</span>)</span><br><span class="line">    androidTestImplementation(<span class="string">&quot;androidx.test:runner:1.2.0&quot;</span>)</span><br><span class="line">    androidTestImplementation(<span class="string">&quot;androidx.test.espresso:espresso-core:3.2.0&quot;</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="结束"><a href="#结束" class="headerlink" title="结束"></a>结束</h3><p>所有 <code>.gradle</code> 文件修改完成后重新 build 项目即可。</p>
+<h3 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h3><p><a target="_blank" rel="noopener" href="https://guides.gradle.org/migrating-build-logic-from-groovy-to-kotlin/">Migrating build logic from Groovy to Kotlin</a></p>
+
           
-            <div class="post-button text-center">
-              <a class="btn" href="/2019/06/20/gradle-kotlin-dsl/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          
-          <!--/noindex-->
         
       
     </div>
@@ -1595,19 +1659,19 @@
       
         
           
-            <p>
-              Android 开发
-              ...
-            </p>
-          <!--noindex-->
+            <p>Android 开发者如果需要在海外发布 App 必不可少的要用到多语言的切换，这里记录 Android 多语言切换的基础实现。</p>
+<h3 id="添加多语言文件"><a href="#添加多语言文件" class="headerlink" title="添加多语言文件"></a>添加多语言文件</h3><p>在不同的 value 文件夹下添加不同语言的 string.xml 文件。</p>
+<h3 id="更新-Configuration-中的-Locale-属性"><a href="#更新-Configuration-中的-Locale-属性" class="headerlink" title="更新 Configuration 中的 Locale 属性"></a>更新 Configuration 中的 Locale 属性</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Resources resources = getContext().getResources();</span><br><span class="line">DisplayMetrics dm = resources.getDisplayMetrics();</span><br><span class="line">Configuration config = resources.getConfiguration(); <span class="comment">// 应用用户选择语言</span></span><br><span class="line">config.locale = Locale.ENGLISH;</span><br><span class="line">resources.updateConfiguration(config, dm);</span><br></pre></td></tr></table></figure>
+
+<p>如需要跟随系统设置：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Locale.getDefault()</span><br></pre></td></tr></table></figure>
+
+<h3 id="重启HomeActivity"><a href="#重启HomeActivity" class="headerlink" title="重启HomeActivity"></a>重启HomeActivity</h3><p>关闭 Activity 栈中的所有 Activity 并重启 HomeActivity</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">Intent intent = <span class="keyword">new</span> Intent(<span class="keyword">this</span>, HomeActivity.class);</span><br><span class="line">intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);</span><br><span class="line">startActivity(intent);</span><br><span class="line"><span class="comment">// 杀掉进程</span></span><br><span class="line">android.os.Process.killProcess(android.os.Process.myPid());</span><br><span class="line">System.exit(<span class="number">0</span>);</span><br></pre></td></tr></table></figure>
+
+<p><a target="_blank" rel="noopener" href="https://jaeger.itscoder.com/android/2016/05/14/switch-language-on-android-app.html">参考链接：Android App 多语言切换</a></p>
+
           
-            <div class="post-button text-center">
-              <a class="btn" href="/2019/06/19/android-multi-language/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          
-          <!--/noindex-->
         
       
     </div>
