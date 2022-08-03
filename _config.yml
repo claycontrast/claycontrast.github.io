@@ -14,7 +14,7 @@ timezone: Asia/Shanghai
 
 # URL
 ## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'
-url: http://hotsx.github.io
+url: http://claycontrast.github.io
 root: /
 permalink: :year/:month/:day/:title/
 permalink_defaults:
@@ -83,5 +83,5 @@ theme: next
 ## Docs: https://hexo.io/docs/deployment.html
 deploy:
   type: git
-  repo: git@github.com:hotsx/hotsx.github.io.git
+  repo: git@github.com:claycontrast/claycontrast.github.io.git
   branch: master
